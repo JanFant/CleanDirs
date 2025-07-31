@@ -12,7 +12,7 @@ import (
 func init() {
 	var confPath string
 	flag.StringVar(&confPath, "config-path", "cleanDirs.toml", "Path to config file")
-
+	flag.Parse()
 	config.GlobalConfig = config.NewConfig()
 	if _, err := toml.DecodeFile(confPath, &config.GlobalConfig); err != nil {
 		fmt.Println("Error loading config file:", err.Error())

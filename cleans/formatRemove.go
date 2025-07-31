@@ -33,11 +33,11 @@ func removeFilesByMask(root, mask string) error {
 		if !info.IsDir() {
 			// Проверяем соответствие маске
 			if strings.Contains(info.Name(), mask) {
-				// Удаляем файл
-				//err := os.Remove(path)
-				//if err != nil {
-				//	return fmt.Errorf("ошибка удаления файла %s: %w", path, err)
-				//}
+				//Удаляем файл
+				err := os.Remove(path)
+				if err != nil {
+					return fmt.Errorf("ошибка удаления файла %s: %w", path, err)
+				}
 				fmt.Printf("Удален файл: %s\n", path)
 			}
 		}
