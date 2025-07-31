@@ -1,0 +1,6 @@
+[Scans]
+    ScansName = ["Scan","Сканы", "Scans1"]
+[Formats]
+    FormatsName = ["txt","rar","docx"]
+[Users]
+    UsersName = []

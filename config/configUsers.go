@@ -1,5 +1,5 @@
 package config
 
 type ConfigUsers struct {
-	NameFUsers []string `toml:"Users"`
+	NameFUsers []string `toml:"UsersName"`
 }
