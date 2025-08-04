@@ -20,8 +20,6 @@ func init() {
 	flag.BoolVar(&DEBUG, "debug", false, "Enable debug mode")
 	flag.Parse()
 
-	DEBUG = true
-
 	fmt.Println(DEBUG)
 	conf = config.NewConfig()
 	if _, err := toml.DecodeFile(confPath, &conf); err != nil {
@@ -32,12 +30,12 @@ func init() {
 
 func main() {
 	//Delete Scans
-	err := cleans.CleanScans(conf.Scans.NameF, conf.Formats.NameFFormats, conf.Files.Excepts, DEBUG)
+	err := cleans.CleanScans(conf.Scans.NameF, conf.Users.DirsExcepts, conf.Files.Excepts, conf.Formats.NameFFormats, DEBUG)
 	if err != nil {
 		fmt.Println("Error cleaning scans:", err.Error())
 	}
 	fmt.Println()
-	err = cleans.CleanUsers(conf.Users.NameF, conf.Formats.NameFFormats, DEBUG)
+	err = cleans.CleanUsers(conf.Users.NameF, conf.Users.DirsExcepts, conf.Files.Excepts, conf.Formats.NameFFormats, DEBUG)
 	if err != nil {
 		fmt.Println("Error cleaning users:", err.Error())
 	}

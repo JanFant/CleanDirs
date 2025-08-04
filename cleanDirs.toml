@@ -1,6 +1,23 @@
+#Scans - все что отностся к скану
+#ScansName - название каталогов для сканов которые находятся в C:/
+#FileExcept - файлы исключения
 [Scans]
     ScansName = ["Scan","Сканы", "Scans1"]
+
+#Formats - раздел фарматов
+#FormatsName - форматы которые нужно удалять
 [Formats]
-    FormatsName = ["txt","rar","docx"]
+    FormatsName = [".txt",".rar",".docx"]
+
+#Users - раздел пользователей
+#UsersName - дополнительные пользователе если они не подходят под обычный шаблон имени *.*
+#DirsExcept - каталоги которые не нужно трогать
 [Users]
-    UsersName = []
+    UsersName = ["t.asd"]
+    DirsExcept = ["Tor Browser","zapret","Telegram Desktop","My Games"]
+
+#Files - раздел файлов
+#FilesExcept - исключения файлов которые не удалять
+[Files]
+    FilesExcept = [".ppinfocache", "maxdesk.ini2",
+        "PP11Thumbs.ptn", "PP11Thumbs.ptn2", "rar.rar"]

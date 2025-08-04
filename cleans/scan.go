@@ -6,17 +6,17 @@ import (
 
 var scanPath = "c:/"
 
-func CleanScans(paths []string, formats []string, exceptFiles []string, DEBUG bool) (err error) {
+func CleanScans(paths, dirsExcept, exceptFiles, formats []string, DEBUG bool) (err error) {
 	if DEBUG {
-		fmt.Println("Каталога Сканов!")
+		fmt.Println("Сканы!")
 	}
 
 	if len(paths) == 0 || len(formats) == 0 {
-		return fmt.Errorf("scans or formats is empty")
+		return fmt.Errorf("сакны и форматы в конфиге пусты")
 	}
 	for _, path := range paths {
 		for _, format := range formats {
-			err = removeFilesByMask(fmt.Sprintf(scanPath+path), format, exceptFiles, DEBUG)
+			err = removeFilesByMaskUser(fmt.Sprintf(scanPath+path), format, exceptFiles, dirsExcept, DEBUG)
 			if err != nil {
 				if DEBUG {
 					fmt.Println("Не найден каталок: ", scanPath+path)
