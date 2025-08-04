@@ -1,5 +1,6 @@
 package config
 
-type ConfigUsers struct {
-	NameFUsers []string `toml:"UsersName"`
+type Users struct {
+	NameF       []string `toml:"UsersName"`
+	DirsExcepts []string `toml:"DirsExcept"`
 }

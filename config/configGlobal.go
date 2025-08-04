@@ -4,9 +4,10 @@ var GlobalConfig *Config
 
 // Config struct all configs
 type Config struct {
-	ScansConfig   ConfigScans   `toml:"Scans"`
-	UsersConfig   ConfigUsers   `toml:"Users"`
-	FormatsConfig ConfigFormats `toml:"Formats"`
+	Scans   Scans   `toml:"Scans"`
+	Users   Users   `toml:"Users"`
+	Formats Formats `toml:"Formats"`
+	Files   Files   `toml:"Files"`
 }
 
 func NewConfig() *Config {

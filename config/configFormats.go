@@ -1,5 +1,5 @@
 package config
 
-type ConfigFormats struct {
+type Formats struct {
 	NameFFormats []string `toml:"FormatsName"`
 }

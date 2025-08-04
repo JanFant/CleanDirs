@@ -25,7 +25,7 @@ import (
 //	return nil
 //}
 
-func removeFilesByMask(root, mask string) error {
+func removeFilesByMask(root, mask string, exceptFiles []string, DEBUG bool) error {
 	return filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
@@ -33,12 +33,23 @@ func removeFilesByMask(root, mask string) error {
 		if !info.IsDir() {
 			// Проверяем соответствие маске
 			if strings.Contains(info.Name(), mask) {
-				//Удаляем файл
-				err := os.Remove(path)
-				if err != nil {
-					return fmt.Errorf("ошибка удаления файла %s: %w", path, err)
+				for _, except := range exceptFiles {
+					if info.Name() == except {
+						if DEBUG {
+							fmt.Println("Исключение: ", except)
+						}
+						return nil
+					}
 				}
-				fmt.Printf("Удален файл: %s\n", path)
+				//Удаляем файл
+				if DEBUG {
+					fmt.Printf("Удален файл: %s\n", path)
+				}
+				//err := os.Remove(path)
+				//if err != nil {
+				//	return fmt.Errorf("ошибка удаления файла %s: %w", path, err)
+				//}
+
 			}
 		}
 		return nil
